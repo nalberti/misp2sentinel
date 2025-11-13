@@ -22,6 +22,7 @@ ms_auth = {
     'client_secret': client_secret,
     'scope': 'https://management.azure.com/.default',
     'graph_api': False,
+    'new_upload_api': True,
     'workspace_id': workspace_id
 }
 
@@ -55,7 +56,7 @@ ms_max_indicators_request = 100     # Throttle max: 100 indicators per request
 ms_max_requests_minute = 100        # Throttle max: 100 requests per minute
 ms_useragent = 'MISP-1.0'
 ms_target_product = 'Azure Sentinel'    # targetProduct
-ms_api_version = "2022-07-01"       # Upload Indicators API version
+ms_api_version = "2024-02-01-preview"   # Upload Indicators API version
 
 # Graph API only settings
 ms_passiveonly = False                  # passiveOnly
@@ -116,3 +117,9 @@ days_to_expire_mapping = {          # Upload indicators API only. Mapping for ex
                         "url": 400
                     }
 misp_flatten_attributes = True 
+
+# Additional settings for new upload API
+days_to_expire_ignore_misp_last_seen = True   # Ignore MISP last seen dates and use config values
+remove_pipe_from_misp_attribute = True        # Remove pipe separator from MISP attribute types
+misp_remove_eventreports = True               # Remove event reports to reduce payload size  
+sentinel_write_response = False               # Write Sentinel API responses to file 
